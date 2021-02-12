@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +29,17 @@ public class AddressBookControllerTest {
     @MockBean
     private AddressBookRepository addressBookService;
 
+    private static List<AddressBook> addressBooks;
+
+    @BeforeAll
+    public static void setup() {
+        List<BuddyInfo> list= new ArrayList<BuddyInfo>();
+        list.add(new BuddyInfo("Thomas", "Home", "123"));
+        AddressBook addressBook = new AddressBook();
+        addressBook.addBuddy(new BuddyInfo("Thomas", "Home", "123"));
+        addressBooks = new ArrayList<AddressBook>() {{add(addressBook);}};
+    }
+
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
         this.mockMvc.perform(get("/")).andDo(print()).andExpect(status().isOk())
@@ -36,11 +48,6 @@ public class AddressBookControllerTest {
 
     @Test
     public void addressBookShouldReturnMessageFromService() throws Exception {
-        List<BuddyInfo> list= new ArrayList<BuddyInfo>();
-        list.add(new BuddyInfo("Thomas", "Home", "123"));
-        AddressBook addressBook = new AddressBook();
-        addressBook.addBuddy(new BuddyInfo("Thomas", "Home", "123"));
-        List<AddressBook> addressBooks = new ArrayList<AddressBook>() {{add(addressBook);}};
         when(addressBookService.findAll()).thenReturn(addressBooks);
         this.mockMvc.perform(get("/allBooks")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Thomas")));
