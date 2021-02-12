@@ -4,17 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-@SpringBootApplication
-public class AddressbBookSpringApplication {
+//@SpringBootApplication
+public class AddressBookSpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AddressbBookSpringApplication.class, args);
+		SpringApplication.run(AddressBookSpringApplication.class, args);
 	}
 
-	private static final Logger log = LoggerFactory.getLogger(AddressbBookSpringApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(AddressBookSpringApplication.class);
 
 	@Bean
 	public CommandLineRunner buddyInfoDemo(BuddyInfoRepository repository) {
