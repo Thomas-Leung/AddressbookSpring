@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head><title>AddressBook</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body><h1 th:Text="AddressBook">"</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Telephone</th>
+    </tr>
+    <!--For each loop-->
+    <!--/*@thymesVar id="addressBook" type="java"*/-->
+    <!--/*@thymesVar id="getBuddyInfos" type="java"*/-->
+    <tr th:each="buddy : ${addressBook.getBuddyInfos()}">
+        <!--/*@thymesVar id="buddy" type="java"*/-->
+        <td th:text="${buddy.getId()}"></td>
+        <td th:text="${buddy.getName()}"></td>
+        <td th:text="${buddy.getAddress()}"></td>
+        <td th:text="${buddy.getPhoneNumber()}"></td>
+    </tr>
+</table>
+</body>
+</html>
