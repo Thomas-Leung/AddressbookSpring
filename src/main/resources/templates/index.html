@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--SPA-->
+    <title>Hello jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <h2>Address Book</h2>
+    <button id="createAddressBook" onclick="AddressBooks.createAddressBook()">Create Address Book</button>
+
+    <h2>Add buddy after creating an address book</h2>
+    <form id="buddyForm" method="post">
+        <p>Address Book ID: <input id="addressBookId" name="addressBookId" type="text" /></p>
+        <p>Name: <input id="name" type="text" /></p>
+        <p>Address: <input id="address" type="text"/></p>
+        <p>PhoneNumber: <input id="phoneNumber" type="text"/></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+    <button onclick="AddressBooks.viewAddressBook()">View Address Book</button>
+<div id="addressBookInfo"></div>
+
+</body>
+</html>
