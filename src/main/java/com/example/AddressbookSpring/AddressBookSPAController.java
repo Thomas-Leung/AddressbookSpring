@@ -13,12 +13,6 @@ public class AddressBookSPAController {
         this.repository = repository;
     }
 
-//    @ResponseBody
-//    @GetMapping("/allBooks")
-//    public List<AddressBook> getAllBooks() {
-//        return (List<AddressBook>) repository.findAll();
-//    }
-//
     @ResponseBody
     @PostMapping("/spa/createAddressBook")
     public AddressBook createAddressBook() {
@@ -52,5 +46,13 @@ public class AddressBookSPAController {
         System.out.println("Address book page created");
         model.addAttribute("buddy", new BuddyInfo()); // pass to the html template
         return "index";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/spa/addressBook/{addressId}/remove/{buddyId}")
+    public AddressBook removeBuddy(@PathVariable Long addressId, @PathVariable Long buddyId) {
+        AddressBook book = repository.findById(addressId).get();
+        book.removeBuddy(buddyId);
+        return repository.save(book); // update the book
     }
 }

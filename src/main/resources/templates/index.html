@@ -10,8 +10,11 @@
 <body>
     <h2>Address Book</h2>
     <button id="createAddressBook" onclick="AddressBooks.createAddressBook()">Create Address Book</button>
+    <div id="created"></div>
 
-    <h2>Add buddy after creating an address book</h2>
+    <p>------------------------------------------------------------</p>
+
+    <h3>Add buddy after creating an address book</h3>
     <form id="buddyForm" method="post">
         <p>Address Book ID: <input id="addressBookId" name="addressBookId" type="text" /></p>
         <p>Name: <input id="name" type="text" /></p>
@@ -20,8 +23,19 @@
         <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     </form>
 
+    <p>------------------------------------------------------------</p>
+
+    <h3>View address book</h3>
+    <p>Address Book ID: <input id="viewAddressBookId" type="text" /></p>
     <button onclick="AddressBooks.viewAddressBook()">View Address Book</button>
-<div id="addressBookInfo"></div>
+    <div id="addressBookInfo"></div>
+
+    <p>------------------------------------------------------------</p>
+
+    <h3>Delete buddy in address book</h3>
+    <p>Address Book ID: <input id="deleteBuddyAddressBookId" type="text" /></p>
+    <p>Buddy ID: <input id="deleteBuddyId" type="text" /></p>
+    <button onclick="AddressBooks.deleteBuddy()">Delete Address Book</button>
 
 </body>
 </html>
